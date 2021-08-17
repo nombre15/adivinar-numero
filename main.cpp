@@ -21,11 +21,37 @@ int main()
 
     numero = rand()% 20 + 1;
 
-    adivinar2:
+    while(adivinanza != numero){
 
-    cin >> adivinanza;
+       intentosNumero--;
+       cin >> adivinanza;
+       cout << "no adivinaste, escribe pista para tener una pista, tienes " << intentosNumero << " intentos para adivinar y " << intentosPista << " pistas" << endl;
+       cin >> pista;
 
-    if(adivinanza == numero){
+       if (intentosNumero == 0){
+        cout << "no tienes mas intentos" << endl;
+        return 0;
+       }
+
+       if(pista == "pista"){
+
+             if(intentosPista == 0){
+                cout << "no tienes mas pistas" << endl;
+            }
+
+        if(adivinanza < numero){
+                intentosPista--;
+
+            cout << "el numero que ingresaste " << adivinanza << " es muy bajo" << endl;
+        }
+
+        else if (adivinanza > numero){
+                intentosPista--;
+
+            cout << "el numero que ingresaste " << adivinanza << " es muy alto" << endl;
+        }
+       }
+    }
 
         cout << "el numero es " << numero << " adivinaste" << endl;
         cout << "quieres jugar otra vez" << endl;
@@ -38,39 +64,4 @@ int main()
         else{
             return 0;
         }
-    }
-
-    if (adivinanza != numero){
-
-       intentosNumero--;
-       cout << "no adivinaste, escribe pista para tener una pista, tienes " << intentosNumero << " intentos para adivinar y " << intentosPista << " pistas" << endl;
-       cin >> pista;
-
-       if (intentosNumero == 0){
-        cout << "no tienes mas intentos" << endl;
-        return 0;
-       }
-
-       if(pista == "pista"){
-
-            if(intentosPista == 0){
-                cout << "no tienes mas pistas" << endl;
-                goto adivinar2;
-            }
-
-        if(adivinanza < numero){
-                intentosPista--;
-
-            cout << "el numero que ingresaste " << adivinanza << " es muy bajo" << endl;
-            goto adivinar2;
-        }
-
-        else if (adivinanza > numero){
-                intentosPista--;
-
-            cout << "el numero que ingresaste " << adivinanza << " es muy alto" << endl;
-            goto adivinar2;
-        }
-       }
-    }
 }
